@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple URL Shortener</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input { width: 80%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; }
+        p { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Simple URL Shortener</h1>
+    <input type="text" id="urlInput" placeholder="Enter your URL here">
+    <button onclick="shortenUrl()">Shorten URL</button>
+    <p id="shortLink"></p>
+
+    <script>
+        function shortenUrl() {
+            const url = document.getElementById('urlInput').value;
+            if (!url) {
+                alert("Please enter a valid URL.");
+                return;
+            }
+
+            fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.shortlink) {
+                        document.getElementById('shortLink').innerText = "Shortened URL: " + data.shortlink;
+                    } else {
+                        alert("Error creating short link.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred.");
+                });
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
