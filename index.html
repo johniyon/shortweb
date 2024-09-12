@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Untitled</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,6 +59,20 @@
 </head>
 <body>
     <h1>Simple URL Shortener</h1>
+
+    <!-- Google AdSense Code -->
+    <div class="box">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2418802708727217" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block; width:300px; height:250px;" <!-- Adjust size as needed -->
+             data-ad-client="ca-pub-2418802708727217"
+             data-ad-slot="YOUR_AD_SLOT_ID" <!-- Replace with your ad slot ID -->
+             data-ad-format="auto"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
     <div class="box" id="inputBox">
         <h2>Enter Your URL</h2>
         <input type="text" id="urlInput" placeholder="Enter your URL here">
@@ -88,7 +92,7 @@
             fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);  // Log the response for debugging
+                    console.log(data);
                     if (data.shorturl) {
                         document.getElementById('shortLink').innerText = data.shorturl;
                     } else {
@@ -101,9 +105,5 @@
                 });
         }
     </script>
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
