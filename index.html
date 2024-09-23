@@ -3,16 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Downloader</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Welcome to Our Realistic Underwater World</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(0deg, #000033, #006994, #4db8ff);
+            position: relative;
+            transition: all 1s ease;
+        }
+        .welcome-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            text-align: center;
+            max-width: 80%;
+            z-index: 10;
+            transition: all 1s ease;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #006994;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .cta-button:hover {
+            background-color: #ff8787;
+            transform: scale(1.05);
+        }
+        .fish {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: swim 20s linear infinite;
+        }
+        .fish1 { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><path d="M10 15 Q 20 5, 50 15 Q 20 25, 10 15 Z" fill="%23FFD700"/><circle cx="45" cy="15" r="2" fill="%23000"/></svg>'); }
+        .fish2 { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><path d="M10 15 Q 20 5, 50 15 Q 20 25, 10 15 Z" fill="%23FF6347"/><circle cx="45" cy="15" r="2" fill="%23000"/></svg>'); }
+        .fish3 { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><path d="M10 15 Q 20 5, 50 15 Q 20 25, 10 15 Z" fill="%234682B4"/><circle cx="45" cy="15" r="2" fill="%23000"/></svg>'); }
+        @keyframes swim {
+            0% { transform: translateX(-100%) scaleX(1); }
+            49% { transform: translateX(100%) scaleX(1); }
+            50% { transform: translateX(100%) scaleX(-1); }
+            99% { transform: translateX(-100%) scaleX(-1); }
+            100% { transform: translateX(-100%) scaleX(1); }
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 33% 33%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+            border-radius: 50%;
+            animation: rise 8s infinite ease-in;
+        }
+        @keyframes rise {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+        .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 100"><path d="M15 100 Q 5 75, 15 50 Q 25 25, 15 0" stroke="%23008000" fill="none" stroke-width="5"/></svg>') no-repeat;
+            animation: sway 5s ease-in-out infinite alternate;
+        }
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        .journey-started .container {
+            background: linear-gradient(0deg, #000022, #004466, #2b7db5);
+        }
+        .journey-started .welcome-box {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        .journey-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 1s ease 1s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .journey-started .journey-text {
+            opacity: 1;
+        }
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.05) 50%, 
+                rgba(255,255,255,0) 100%
+            );
+            opacity: 0.5;
+            animation: rays 10s linear infinite;
+        }
+        @keyframes rays {
+            0%, 100% { transform: translateY(-100%); }
+            50% { transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Video Downloader</h1>
-        <input type="text" id="videoUrl" placeholder="Enter video URL" />
-        <button id="downloadButton">Download Video</button>
-        <p id="message"></p>
+        <div class="light-rays"></div>
+        <div class="welcome-box">
+            <h1>Welcome to Our Underwater World</h1>
+            <p>Dive into a sea of endless possibilities and colorful experiences.</p>
+            <button class="cta-button">Start Your Journey</button>
+        </div>
+        <div class="journey-text">Your underwater adventure begins!</div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function createFish() {
+            const fish = document.createElement('div');
+            fish.className = `fish fish${Math.floor(Math.random() * 3) + 1}`;
+            fish.style.top = `${Math.random() * 80}%`;
+            fish.style.animationDuration = `${20 + Math.random() * 10}s`;
+            document.body.appendChild(fish);
+        }
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.width = bubble.style.height = `${Math.random() * 20 + 10}px`;
+            bubble.style.animationDuration = `${5 + Math.random() * 10}s`;
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 8000);
+        }
+
+        function createSeaweed() {
+            const seaweed = document.createElement('div');
+            seaweed.className = 'seaweed';
+            seaweed.style.left = `${Math.random() * 100}%`;
+            seaweed.style.height = `${Math.random() * 100 + 50}px`;
+            seaweed.style.animationDuration = `${5 + Math.random() * 3}s`;
+            document.body.appendChild(seaweed);
+        }
+
+        // Create initial fish
+        for (let i = 0; i < 10; i++) {
+            createFish();
+        }
+
+        // Create seaweed
+        for (let i = 0; i < 5; i++) {
+            createSeaweed();
+        }
+
+        // Create bubbles periodically
+        setInterval(createBubble, 300);
+
+        // Add more fish occasionally
+        setInterval(createFish, 5000);
+
+        // Handle button click
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            document.body.classList.add('journey-started');
+            setTimeout(() => {
+                document.body.classList.remove('journey-started');
+                document.querySelector('.welcome-box').style.opacity = 1;
+                document.querySelector('.welcome-box').style.transform = 'translateY(0)';
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
